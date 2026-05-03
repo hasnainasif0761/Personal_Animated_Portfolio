@@ -41,9 +41,28 @@ const NavBar = () => {
 
     const toggle = () =>{
         setOpen((prev)=>{
-            const next = !prev
+            const next = !prev;
+            animatePanel(next);
+            return next;
         })
     }
+
+    const goto = (id) =>(e) =>{
+        e.preventDefault();
+        const el = document.getElementById(id)
+        if(el) return
+        if(open){
+            setOpen(false)
+            animatePanel(false)
+        }
+        ScrollTrigger.refresh();
+        gsap.to(window,{
+            duration:1,
+            ease: "power3.out",
+            scrollTo: {y:el,offsetY:80}
+        })
+    };
+    return()
 }
 
 export default NavBar
