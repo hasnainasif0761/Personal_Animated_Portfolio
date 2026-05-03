@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { navLinks } from '../../constants/NabarConstants';
+import { navLinks } from '../../../public/constants/navbarConstants';
 import './NavBar.scss'
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -66,8 +66,44 @@ const NavBar = () => {
         <nav className="navbar">
             <div className="navbar-wrapper">
                 <a className="nav-home" href="#home" onClick={()=>goto('home')} aria-label="Home">
-                    <img src="" alt="" />
+                    <img src="/public/assets/images/common/icons8-home.svg" alt="" />
                 </a>
+                <ul className="nav-links">
+                    {navLinks.map((link)=>(
+                        <li key={link.id}>
+                            <a href={`#${link.id}`} onClick={goto(link.id)}>
+                                {link.label}
+                            </a>
+                        </li>
+                    ))}
+                    <li>
+                        <a href="/public/assets/files/main_inpotant.pdf" className="download-button" download='cv.pdf'>
+                            RESUME
+                        </a>
+                    </li>
+                </ul>
+                <button
+                type="button"
+                className={`nav-burger ${open ? 'is-open' : '' }`}
+                aria-label="toggle menu"
+                aria-expanded={open}
+                aria-controls="nav-panel"
+                onClick={toggle}
+                >
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </button>
+            </div>
+            <div ref={panelRef} id="nav-panel" className="nav-panel">
+                    {navLinks.map((link)=>(
+                        <a key={link.id} href={`#${link.id}`} onClick={goto(link.id)}>
+                            {link.label}
+                        </a>
+                    ))}
+                    <a href="/public/assets/files/main_inpotant.pdf" className="download-button" download='cv.pdf'>
+                        RESUME
+                    </a>
             </div>
         </nav>
     )

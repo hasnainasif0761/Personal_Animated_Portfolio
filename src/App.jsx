@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import {ScrollTrigger, SplitText, ScrollSmoother} from 'gsap/all'
 import Wrap from './components/Wrap/Wrap'
 import Cursor from "./ui/cursor/Cursor"
+import NavBar from "./components/NavBar/NavBar"
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText)
 
@@ -22,6 +23,7 @@ export const App = () => {
     <div id="smooth-content">
       <Wrap />
       <Cursor />
+      <NavBar/>
     </div>
     </div>
     </>
