@@ -62,7 +62,15 @@ const NavBar = () => {
             scrollTo: {y:el,offsetY:80}
         })
     };
-    return()
+    return(
+        <nav className="navbar">
+            <div className="navbar-wrapper">
+                <a className="nav-home" href="#home" onClick={()=>goto('home')} aria-label="Home">
+                    <img src="" alt="" />
+                </a>
+            </div>
+        </nav>
+    )
 }
 
 export default NavBar
